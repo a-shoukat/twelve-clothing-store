@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext.jsx';
+import { useTheme } from '../context/ThemeContext.jsx';
 import { STORE_WHATSAPP } from '../lib/supabase.js';
 
 const ANNOUNCEMENTS = [
@@ -29,8 +30,32 @@ function Wordmark({ compact = false }) {
       <span className={`font-serif font-semibold tracking-[0.18em] ${compact ? 'text-xl' : 'text-2xl'}`}>
         TWELVE
       </span>
-      <span className="text-[9px] tracking-[0.5em] text-smoke mt-0.5">CLOTHING</span>
+      <span className="text-[9px] tracking-[0.5em] text-smoke dark:text-ivory/60 mt-0.5">CLOTHING</span>
     </Link>
+  );
+}
+
+function ThemeToggle({ className = '' }) {
+  const { theme, toggleTheme } = useTheme();
+  const isDark = theme === 'dark';
+  return (
+    <button
+      onClick={toggleTheme}
+      className={`p-2 ${className}`}
+      aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
+      title={isDark ? 'Light theme' : 'Dark theme'}
+    >
+      {isDark ? (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <circle cx="12" cy="12" r="4.5" />
+          <path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19" strokeLinecap="round" />
+        </svg>
+      ) : (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <path d="M20 13.5A8 8 0 1110.5 4 6.5 6.5 0 0020 13.5z" strokeLinejoin="round" />
+        </svg>
+      )}
+    </button>
   );
 }
 
@@ -50,7 +75,7 @@ function SearchOverlay({ onClose }) {
   return (
     <div className="fixed inset-0 z-50">
       <div className="absolute inset-0 bg-ink/50" onClick={onClose} />
-      <div className="absolute top-0 left-0 right-0 bg-ivory border-b border-ink/10 p-6 md:p-10">
+      <div className="absolute top-0 left-0 right-0 bg-ivory dark:bg-[#141414] border-b border-ink/10 dark:border-ivory/15 p-6 md:p-10">
         <form onSubmit={submit} className="max-w-3xl mx-auto flex items-center gap-4">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
             <circle cx="11" cy="11" r="7" />
@@ -61,7 +86,7 @@ function SearchOverlay({ onClose }) {
             value={term}
             onChange={(e) => setTerm(e.target.value)}
             placeholder="Search products…"
-            className="flex-1 bg-transparent font-serif text-2xl md:text-4xl outline-none placeholder:text-smoke/50"
+            className="flex-1 bg-transparent font-serif text-2xl md:text-4xl outline-none placeholder:text-smoke/50 dark:placeholder:text-ivory/40"
           />
           <button type="button" onClick={onClose} aria-label="Close search" className="p-2">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -104,7 +129,7 @@ export default function Navbar() {
         </span>
       </div>
 
-      <nav className="bg-ivory/95 backdrop-blur border-b border-ink/10">
+      <nav className="bg-ivory/95 dark:bg-[#0e0e0e]/95 backdrop-blur border-b border-ink/10 dark:border-ivory/15">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-[1fr_auto_1fr] items-center py-3">
             {/* Left: hamburger (mobile) + logo */}
@@ -141,6 +166,7 @@ export default function Navbar() {
 
             {/* Right: icons */}
             <div className="flex items-center justify-end gap-1">
+              <ThemeToggle />
               <button onClick={() => setSearchOpen(true)} className="p-2" aria-label="Search">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                   <circle cx="11" cy="11" r="7" />
@@ -162,8 +188,8 @@ export default function Navbar() {
                 {accountOpen && (
                   <>
                     <div className="fixed inset-0 z-40" onClick={() => setAccountOpen(false)} />
-                    <div className="absolute right-0 top-11 z-50 w-64 bg-ivory border border-ink/15 shadow-xl p-5">
-                      <p className="text-xs tracking-[0.25em] text-smoke mb-2">GUEST CHECKOUT</p>
+                    <div className="absolute right-0 top-11 z-50 w-64 bg-ivory dark:bg-[#141414] border border-ink/15 dark:border-ivory/20 shadow-xl p-5">
+                      <p className="text-xs tracking-[0.25em] text-smoke dark:text-ivory/60 mb-2">GUEST CHECKOUT</p>
                       <p className="text-sm mb-4">No account needed — order in under a minute.</p>
                       <a
                         href={`https://wa.me/${STORE_WHATSAPP}?text=${encodeURIComponent(
@@ -196,7 +222,7 @@ export default function Navbar() {
                   <circle cx="17" cy="20" r="1.4" />
                 </svg>
                 {count > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 bg-ink text-ivory text-[10px] w-5 h-5 rounded-full flex items-center justify-center">
+                  <span className="absolute -top-0.5 -right-0.5 bg-ink text-ivory dark:bg-ivory dark:text-ink text-[10px] w-5 h-5 rounded-full flex items-center justify-center">
                     {count}
                   </span>
                 )}
@@ -212,20 +238,23 @@ export default function Navbar() {
       {drawerOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
           <div className="absolute inset-0 bg-ink/40" onClick={() => setDrawerOpen(false)} />
-          <div className="absolute left-0 top-0 bottom-0 w-72 bg-ivory p-6 flex flex-col gap-1 shadow-xl overflow-y-auto nice-scroll">
+          <div className="absolute left-0 top-0 bottom-0 w-72 bg-ivory dark:bg-[#141414] p-6 flex flex-col gap-1 shadow-xl overflow-y-auto nice-scroll">
             <div className="flex items-center justify-between mb-6">
               <Wordmark compact />
-              <button aria-label="Close menu" onClick={() => setDrawerOpen(false)} className="p-2">
-                <svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8" fill="none">
-                  <path d="M5 5l14 14M19 5L5 19" strokeLinecap="round" />
-                </svg>
-              </button>
+              <div className="flex items-center gap-1">
+                <ThemeToggle />
+                <button aria-label="Close menu" onClick={() => setDrawerOpen(false)} className="p-2">
+                  <svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8" fill="none">
+                    <path d="M5 5l14 14M19 5L5 19" strokeLinecap="round" />
+                  </svg>
+                </button>
+              </div>
             </div>
             {[...NAV_ROW_1, ...NAV_ROW_2].map((l) => (
               <button
                 key={l.label}
                 onClick={() => go(l.to)}
-                className="text-left py-3 border-b border-ink/10 font-serif text-xl tracking-wide"
+                className="text-left py-3 border-b border-ink/10 dark:border-ivory/10 font-serif text-xl tracking-wide"
               >
                 {l.label}
               </button>

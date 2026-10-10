@@ -4,9 +4,9 @@ import { STORE_INSTAGRAM, STORE_WHATSAPP } from '../lib/supabase.js';
 
 function PolicyBlock({ id, title, children }) {
   return (
-    <div id={id} className="scroll-mt-32 border-t border-ink/10 pt-8">
+    <div id={id} className="scroll-mt-32 border-t border-ink/10 dark:border-ivory/10 pt-8">
       <h2 className="font-serif text-2xl mb-3">{title}</h2>
-      <div className="text-sm text-ink/75 leading-relaxed space-y-2">{children}</div>
+      <div className="text-sm text-ink/75 dark:text-ivory/75 leading-relaxed space-y-2">{children}</div>
     </div>
   );
 }
@@ -25,11 +25,11 @@ export default function Contact() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
-      <p className="text-[11px] tracking-[0.45em] text-smoke text-center mb-2">TWELVE CLOTHING</p>
+      <p className="text-[11px] tracking-[0.45em] text-smoke dark:text-ivory/60 text-center mb-2">TWELVE CLOTHING</p>
       <h1 className="font-serif text-4xl md:text-5xl mb-2 text-center">About Us</h1>
-      <p className="text-center text-smoke text-sm mb-10 tracking-[0.3em]">MINIMAL · TIMELESS · YOU</p>
+      <p className="text-center text-smoke dark:text-ivory/60 text-sm mb-10 tracking-[0.3em]">MINIMAL · TIMELESS · YOU</p>
 
-      <div className="space-y-5 text-ink/85 leading-relaxed">
+      <div className="space-y-5 text-ink/85 dark:text-ivory/85 leading-relaxed">
         <p>
           Twelve Clothing is a minimal fashion label built on a simple belief —
           a wardrobe needs fewer, better pieces. We design timeless essentials
@@ -48,21 +48,21 @@ export default function Contact() {
           href={`https://wa.me/${STORE_WHATSAPP}?text=${encodeURIComponent('Assalam o Alaikum! I have a question about Twelve Clothing.')}`}
           target="_blank"
           rel="noreferrer"
-          className="border border-ink/15 bg-white/60 p-6 text-center hover:border-ink transition"
+          className="border border-ink/15 dark:border-ivory/15 bg-white/60 dark:bg-white/5 p-6 text-center hover:border-ink dark:hover:border-ivory transition"
         >
-          <p className="text-xs tracking-[0.3em] text-smoke mb-2">WHATSAPP</p>
+          <p className="text-xs tracking-[0.3em] text-smoke dark:text-ivory/60 mb-2">WHATSAPP</p>
           <p className="font-medium">+{STORE_WHATSAPP}</p>
-          <p className="text-sm text-smoke mt-1">Chat with us anytime</p>
+          <p className="text-sm text-smoke dark:text-ivory/60 mt-1">Chat with us anytime</p>
         </a>
         <a
           href={STORE_INSTAGRAM}
           target="_blank"
           rel="noreferrer"
-          className="border border-ink/15 bg-white/60 p-6 text-center hover:border-ink transition"
+          className="border border-ink/15 dark:border-ivory/15 bg-white/60 dark:bg-white/5 p-6 text-center hover:border-ink dark:hover:border-ivory transition"
         >
-          <p className="text-xs tracking-[0.3em] text-smoke mb-2">INSTAGRAM</p>
+          <p className="text-xs tracking-[0.3em] text-smoke dark:text-ivory/60 mb-2">INSTAGRAM</p>
           <p className="font-medium">@twelveclothing</p>
-          <p className="text-sm text-smoke mt-1">Follow for new drops</p>
+          <p className="text-sm text-smoke dark:text-ivory/60 mt-1">Follow for new drops</p>
         </a>
       </div>
 

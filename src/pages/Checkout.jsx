@@ -5,8 +5,8 @@ import { useCart } from '../context/CartContext.jsx';
 import { formatPKR, isValidPakPhone } from '../utils/helpers.js';
 
 const inputCls =
-  'w-full border border-ink/20 bg-white/60 px-4 py-3.5 text-sm outline-none focus:border-ink placeholder:text-smoke/70';
-const labelCls = 'block text-[11px] tracking-[0.3em] text-smoke mb-1.5';
+  'w-full border border-ink/20 dark:border-ivory/20 bg-white/60 dark:bg-white/5 px-4 py-3.5 text-sm outline-none focus:border-ink dark:focus:border-ivory placeholder:text-smoke/70 dark:placeholder:text-ivory/40';
+const labelCls = 'block text-[11px] tracking-[0.3em] text-smoke dark:text-ivory/60 mb-1.5';
 
 export default function Checkout() {
   const { items, subtotal, clearCart } = useCart();
@@ -19,8 +19,8 @@ export default function Checkout() {
     return (
       <div className="max-w-2xl mx-auto px-4 py-20 text-center">
         <h1 className="font-serif text-4xl mb-4">Nothing to check out</h1>
-        <p className="text-smoke text-sm mb-8">Your bag is empty.</p>
-        <Link to="/shop" className="inline-block bg-ink text-ivory text-sm tracking-[0.25em] px-10 py-4">
+        <p className="text-smoke dark:text-ivory/60 text-sm mb-8">Your bag is empty.</p>
+        <Link to="/shop" className="inline-block bg-ink text-ivory dark:bg-ivory dark:text-ink text-sm tracking-[0.25em] px-10 py-4">
           CONTINUE SHOPPING
         </Link>
       </div>
@@ -77,7 +77,7 @@ export default function Checkout() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
-      <p className="text-[11px] tracking-[0.45em] text-smoke mb-2">SECURE CHECKOUT</p>
+      <p className="text-[11px] tracking-[0.45em] text-smoke dark:text-ivory/60 mb-2">SECURE CHECKOUT</p>
       <h1 className="font-serif text-4xl md:text-5xl mb-8">Checkout</h1>
 
       <div className="grid gap-10 lg:grid-cols-[1fr_380px]">
@@ -87,7 +87,7 @@ export default function Checkout() {
             <div className="space-y-4">
               <div>
                 <input className={inputCls} placeholder="Full name *" value={form.name} onChange={set('name')} />
-                {errors.name && <p className="text-red-700 text-xs mt-1">{errors.name}</p>}
+                {errors.name && <p className="text-red-700 dark:text-red-400 text-xs mt-1">{errors.name}</p>}
               </div>
               <div>
                 <input
@@ -97,7 +97,7 @@ export default function Checkout() {
                   value={form.phone}
                   onChange={set('phone')}
                 />
-                {errors.phone && <p className="text-red-700 text-xs mt-1">{errors.phone}</p>}
+                {errors.phone && <p className="text-red-700 dark:text-red-400 text-xs mt-1">{errors.phone}</p>}
               </div>
             </div>
           </div>
@@ -107,7 +107,7 @@ export default function Checkout() {
             <div className="space-y-4">
               <div>
                 <input className={inputCls} placeholder="City *" value={form.city} onChange={set('city')} />
-                {errors.city && <p className="text-red-700 text-xs mt-1">{errors.city}</p>}
+                {errors.city && <p className="text-red-700 dark:text-red-400 text-xs mt-1">{errors.city}</p>}
               </div>
               <div>
                 <textarea
@@ -116,7 +116,7 @@ export default function Checkout() {
                   value={form.address}
                   onChange={set('address')}
                 />
-                {errors.address && <p className="text-red-700 text-xs mt-1">{errors.address}</p>}
+                {errors.address && <p className="text-red-700 dark:text-red-400 text-xs mt-1">{errors.address}</p>}
               </div>
               <textarea
                 className={inputCls}
@@ -127,31 +127,31 @@ export default function Checkout() {
             </div>
           </div>
 
-          <div className="border border-ink/15 bg-white/50 p-5">
-            <p className="text-[11px] tracking-[0.3em] text-smoke mb-3">PAYMENT METHOD</p>
+          <div className="border border-ink/15 dark:border-ivory/15 bg-white/50 dark:bg-white/5 p-5">
+            <p className="text-[11px] tracking-[0.3em] text-smoke dark:text-ivory/60 mb-3">PAYMENT METHOD</p>
             <label className="flex items-center gap-3 text-sm cursor-pointer">
-              <input type="radio" checked readOnly className="accent-black" />
+              <input type="radio" checked readOnly className="accent-black dark:accent-white" />
               <span>
-                Cash on Delivery <span className="text-xs text-smoke">(pay when your order arrives)</span>
+                Cash on Delivery <span className="text-xs text-smoke dark:text-ivory/60">(pay when your order arrives)</span>
               </span>
             </label>
           </div>
 
-          {errors.submit && <p className="text-red-700 text-sm">{errors.submit}</p>}
+          {errors.submit && <p className="text-red-700 dark:text-red-400 text-sm">{errors.submit}</p>}
 
           <button
             type="submit"
             disabled={placing}
-            className="w-full bg-ink text-ivory text-sm tracking-[0.25em] py-4 hover:opacity-90 transition disabled:opacity-50"
+            className="w-full bg-ink text-ivory dark:bg-ivory dark:text-ink text-sm tracking-[0.25em] py-4 hover:opacity-90 transition disabled:opacity-50"
           >
             {placing ? 'PLACING ORDER…' : `PLACE ORDER — ${formatPKR(subtotal)}`}
           </button>
-          <p className="text-xs text-smoke text-center">
+          <p className="text-xs text-smoke dark:text-ivory/60 text-center">
             By placing this order you agree to our exchange policy on the Contact page.
           </p>
         </form>
 
-        <aside className="border border-ink/15 bg-white/50 p-6 h-fit lg:sticky lg:top-36">
+        <aside className="border border-ink/15 dark:border-ivory/15 bg-white/50 dark:bg-white/5 p-6 h-fit lg:sticky lg:top-36">
           <h2 className="font-serif text-2xl mb-5">Order Summary</h2>
           <div className="space-y-4 text-sm max-h-80 overflow-y-auto nice-scroll pr-1">
             {items.map((i) => (
@@ -161,7 +161,7 @@ export default function Checkout() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="truncate">{i.name}</p>
-                  <p className="text-xs text-smoke">
+                  <p className="text-xs text-smoke dark:text-ivory/60">
                     {[i.size && `Size: ${i.size}`, i.color && `Color: ${i.color}`, `Qty: ${i.qty}`]
                       .filter(Boolean)
                       .join(' · ')}
@@ -171,13 +171,13 @@ export default function Checkout() {
               </div>
             ))}
           </div>
-          <div className="border-t border-ink/15 mt-5 pt-4 space-y-1.5 text-sm">
+          <div className="border-t border-ink/15 dark:border-ivory/15 mt-5 pt-4 space-y-1.5 text-sm">
             <div className="flex justify-between">
-              <span className="text-smoke">Subtotal</span>
+              <span className="text-smoke dark:text-ivory/60">Subtotal</span>
               <span>{formatPKR(subtotal)}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-smoke">Delivery</span>
+              <span className="text-smoke dark:text-ivory/60">Delivery</span>
               <span>On confirmation</span>
             </div>
             <div className="flex justify-between font-semibold text-base pt-2">

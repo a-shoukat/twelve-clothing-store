@@ -21,7 +21,7 @@ export default function ProductCard({ product }) {
 
   return (
     <Link to={`/product/${product.id}`} className="group block">
-      <div className="relative aspect-[4/5] overflow-hidden bg-cream">
+      <div className="relative aspect-[4/5] overflow-hidden bg-cream dark:bg-[#1a1a1a]">
         <img
           src={img}
           alt={product.name}
@@ -51,7 +51,7 @@ export default function ProductCard({ product }) {
         <div className="mt-1 flex items-baseline gap-2">
           <span className="font-medium">{formatPKR(product.price)}</span>
           {hasDiscount && (
-            <span className="text-smoke text-sm line-through">{formatPKR(original)}</span>
+            <span className="text-smoke dark:text-ivory/50 text-sm line-through">{formatPKR(original)}</span>
           )}
         </div>
       </div>

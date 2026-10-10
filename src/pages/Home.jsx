@@ -128,7 +128,7 @@ export default function Home() {
 
       {/* 3 — Collection heading */}
       <section className="max-w-7xl mx-auto px-4 pt-12 md:pt-16 pb-2">
-        <p className="text-[11px] tracking-[0.45em] text-smoke mb-3">CHAPTER I</p>
+        <p className="text-[11px] tracking-[0.45em] text-smoke dark:text-ivory/60 mb-3">CHAPTER I</p>
         <h2 className="font-serif text-4xl md:text-6xl">WINTERS 2026-27</h2>
       </section>
 
@@ -141,7 +141,7 @@ export default function Home() {
               <Link
                 key={c.name}
                 to={`/shop?cat=${c.name}`}
-                className="group relative overflow-hidden bg-cream aspect-[4/5] md:aspect-[16/10]"
+                className="group relative overflow-hidden bg-cream dark:bg-[#1a1a1a] aspect-[4/5] md:aspect-[16/10]"
               >
                 {img && (
                   <img
@@ -188,13 +188,13 @@ export default function Home() {
       {/* 8 — Brand story split */}
       <section className="max-w-7xl mx-auto px-4 py-12 md:py-20 grid md:grid-cols-2 gap-8 md:gap-14 items-center">
         <div>
-          <p className="text-[11px] tracking-[0.45em] text-smoke mb-4">OUR STORY</p>
+          <p className="text-[11px] tracking-[0.45em] text-smoke dark:text-ivory/60 mb-4">OUR STORY</p>
           <h2 className="font-serif text-4xl md:text-5xl leading-tight mb-6">
             BUILT ON LESS,
             <br />
             DESIGNED TO LAST.
           </h2>
-          <div className="space-y-4 text-ink/80 leading-relaxed text-[15px]">
+          <div className="space-y-4 text-ink/80 dark:text-ivory/80 leading-relaxed text-[15px]">
             <p>
               Twelve Clothing started with a simple belief — a wardrobe needs
               fewer, better pieces. No noise, no fast-fashion churn. Just
@@ -212,16 +212,16 @@ export default function Home() {
           </div>
           <Link
             to="/contact"
-            className="inline-block mt-8 border border-ink text-sm tracking-[0.25em] px-10 py-3.5 hover:bg-ink hover:text-ivory transition"
+            className="inline-block mt-8 border border-ink dark:border-ivory text-sm tracking-[0.25em] px-10 py-3.5 hover:bg-ink hover:text-ivory dark:hover:bg-ivory dark:hover:text-ink transition"
           >
             ABOUT US
           </Link>
         </div>
-        <div className="aspect-[4/5] md:aspect-[3/4] overflow-hidden bg-cream">
+        <div className="aspect-[4/5] md:aspect-[3/4] overflow-hidden bg-cream dark:bg-[#1a1a1a]">
           {storyImg ? (
             <img src={storyImg} alt="Twelve Clothing editorial" className="w-full h-full object-cover" loading="lazy" />
           ) : (
-            <div className="w-full h-full flex items-center justify-center font-serif text-3xl text-smoke">
+            <div className="w-full h-full flex items-center justify-center font-serif text-3xl text-smoke dark:text-ivory/40">
               TWELVE
             </div>
           )}
@@ -230,37 +230,37 @@ export default function Home() {
 
       {/* 9 — Trust marquee */}
       <Marquee
-        className="border-y border-ink/10 py-3 text-sm tracking-[0.2em]"
+        className="border-y border-ink/10 dark:border-ivory/15 py-3 text-sm tracking-[0.2em]"
         items={['Fast Shipping', 'Premium Quality', 'Exceptional Support']}
-        itemClassName="text-ink"
+        itemClassName="text-ink dark:text-ivory"
       />
 
       {/* 10 — Editorial feature split */}
       <section className="max-w-7xl mx-auto px-4 py-12 md:py-20 grid md:grid-cols-2 gap-8 md:gap-14 items-center">
-        <div className="aspect-[4/5] md:aspect-[3/4] overflow-hidden bg-cream order-2 md:order-1">
+        <div className="aspect-[4/5] md:aspect-[3/4] overflow-hidden bg-cream dark:bg-[#1a1a1a] order-2 md:order-1">
           {editImg ? (
             <img src={editImg} alt="The Essentials Edit" className="w-full h-full object-cover" loading="lazy" />
           ) : (
-            <div className="w-full h-full flex items-center justify-center font-serif text-3xl text-smoke">
+            <div className="w-full h-full flex items-center justify-center font-serif text-3xl text-smoke dark:text-ivory/40">
               TWELVE
             </div>
           )}
         </div>
         <div className="order-1 md:order-2">
-          <p className="text-[11px] tracking-[0.45em] text-smoke mb-4">SIGNATURE EDIT</p>
+          <p className="text-[11px] tracking-[0.45em] text-smoke dark:text-ivory/60 mb-4">SIGNATURE EDIT</p>
           <h2 className="font-serif text-4xl md:text-5xl leading-tight mb-6">
             THE ESSENTIALS
             <br />
             EDIT
           </h2>
-          <p className="text-ink/80 leading-relaxed text-[15px] max-w-md">
+          <p className="text-ink/80 dark:text-ivory/80 leading-relaxed text-[15px] max-w-md">
             Our signature selection of everyday staples — breathable cottons,
             clean silhouettes, and a palette that pairs with everything you own.
             Designed slowly, worn daily.
           </p>
           <Link
             to="/shop?sort=featured"
-            className="inline-block mt-8 bg-ink text-ivory text-sm tracking-[0.25em] px-10 py-3.5 hover:opacity-90 transition"
+            className="inline-block mt-8 bg-ink text-ivory dark:bg-ivory dark:text-ink text-sm tracking-[0.25em] px-10 py-3.5 hover:opacity-90 transition"
           >
             SHOP THE EDIT
           </Link>
@@ -290,16 +290,16 @@ export default function Home() {
       <section className="py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="font-serif text-3xl md:text-4xl mb-1">What Our Customers Are Saying</h2>
-          <p className="text-xs text-smoke mb-8 tracking-wide">(Illustrative sample reviews)</p>
+          <p className="text-xs text-smoke dark:text-ivory/60 mb-8 tracking-wide">(Illustrative sample reviews)</p>
           <div className="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-2">
             {SAMPLE_REVIEWS.map((r, i) => (
               <div
                 key={i}
-                className="snap-start shrink-0 basis-[80%] sm:basis-[45%] lg:basis-[30%] border border-ink/10 bg-white/50 p-6"
+                className="snap-start shrink-0 basis-[80%] sm:basis-[45%] lg:basis-[30%] border border-ink/10 dark:border-ivory/15 bg-white/50 dark:bg-white/5 p-6"
               >
                 <Stars n={r.stars} />
-                <p className="text-sm text-ink/80 leading-relaxed mt-4">“{r.text}”</p>
-                <p className="text-xs text-smoke mt-4 tracking-[0.2em]">— {r.who.toUpperCase()}</p>
+                <p className="text-sm text-ink/80 dark:text-ivory/80 leading-relaxed mt-4">“{r.text}”</p>
+                <p className="text-xs text-smoke dark:text-ivory/60 mt-4 tracking-[0.2em]">— {r.who.toUpperCase()}</p>
               </div>
             ))}
           </div>
@@ -307,7 +307,7 @@ export default function Home() {
       </section>
 
       {/* 13 — Trust icons */}
-      <section className="border-t border-ink/10">
+      <section className="border-t border-ink/10 dark:border-ivory/15">
         <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-3 gap-4 text-center">
           {[
             {
@@ -334,7 +334,7 @@ export default function Home() {
             },
           ].map((b) => (
             <div key={b.t} className="flex flex-col items-center">
-              <span className="w-12 h-12 rounded-full bg-ink text-ivory flex items-center justify-center mb-3">
+              <span className="w-12 h-12 rounded-full bg-ink text-ivory dark:bg-ivory dark:text-ink flex items-center justify-center mb-3">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                   {b.icon}
                   {b.wheels && (
@@ -346,7 +346,7 @@ export default function Home() {
                 </svg>
               </span>
               <p className="font-medium text-sm md:text-base">{b.t}</p>
-              <p className="text-xs text-smoke mt-1">{b.d}</p>
+              <p className="text-xs text-smoke dark:text-ivory/60 mt-1">{b.d}</p>
             </div>
           ))}
         </div>

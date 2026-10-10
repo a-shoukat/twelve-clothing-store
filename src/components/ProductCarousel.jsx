@@ -37,7 +37,7 @@ export default function ProductCarousel({
           </Link>
         </div>
         {subtitle && (
-          <p className={`text-sm mb-6 ${dark ? 'text-ivory/60' : 'text-smoke'}`}>{subtitle}</p>
+          <p className={`text-sm mb-6 ${dark ? 'text-ivory/60' : 'text-smoke dark:text-ivory/60'}`}>{subtitle}</p>
         )}
         {!subtitle && <div className="mb-6" />}
 
@@ -61,7 +61,7 @@ export default function ProductCarousel({
               onClick={() => scroll(-1)}
               aria-label="Scroll left"
               className={`w-10 h-10 rounded-full border flex items-center justify-center transition hover:opacity-70 ${
-                dark ? 'border-ivory/30' : 'border-ink/25'
+                dark ? 'border-ivory/30' : 'border-ink/25 dark:border-ivory/30'
               }`}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -72,7 +72,7 @@ export default function ProductCarousel({
               onClick={() => scroll(1)}
               aria-label="Scroll right"
               className={`w-10 h-10 rounded-full border flex items-center justify-center transition hover:opacity-70 ${
-                dark ? 'border-ivory/30' : 'border-ink/25'
+                dark ? 'border-ivory/30' : 'border-ink/25 dark:border-ivory/30'
               }`}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

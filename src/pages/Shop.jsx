@@ -79,12 +79,12 @@ export default function Shop() {
   }, [products, cat, size, color, bandIdx, sort, inStockOnly, q]);
 
   const selectCls =
-    'w-full border border-ink/20 bg-white/60 px-3 py-2.5 text-sm outline-none focus:border-ink';
+    'w-full border border-ink/20 dark:border-ivory/20 bg-white/60 dark:bg-white/5 px-3 py-2.5 text-sm outline-none focus:border-ink dark:focus:border-ivory dark:[color-scheme:dark]';
 
   const filters = (
     <div className="space-y-5">
       <div>
-        <p className="text-[11px] tracking-[0.3em] text-smoke mb-2">CATEGORY</p>
+        <p className="text-[11px] tracking-[0.3em] text-smoke dark:text-ivory/60 mb-2">CATEGORY</p>
         <select value={cat} onChange={(e) => set('cat', e.target.value)} className={selectCls}>
           <option value="All">All categories</option>
           {CATEGORIES.map((c) => (
@@ -93,7 +93,7 @@ export default function Shop() {
         </select>
       </div>
       <div>
-        <p className="text-[11px] tracking-[0.3em] text-smoke mb-2">SIZE</p>
+        <p className="text-[11px] tracking-[0.3em] text-smoke dark:text-ivory/60 mb-2">SIZE</p>
         <select value={size} onChange={(e) => set('size', e.target.value)} className={selectCls}>
           <option value="All">All sizes</option>
           {SIZES.map((s) => (
@@ -102,7 +102,7 @@ export default function Shop() {
         </select>
       </div>
       <div>
-        <p className="text-[11px] tracking-[0.3em] text-smoke mb-2">COLOR</p>
+        <p className="text-[11px] tracking-[0.3em] text-smoke dark:text-ivory/60 mb-2">COLOR</p>
         <select value={color} onChange={(e) => set('color', e.target.value)} className={selectCls}>
           <option value="All">All colors</option>
           {allColors.map((c) => (
@@ -111,7 +111,7 @@ export default function Shop() {
         </select>
       </div>
       <div>
-        <p className="text-[11px] tracking-[0.3em] text-smoke mb-2">PRICE</p>
+        <p className="text-[11px] tracking-[0.3em] text-smoke dark:text-ivory/60 mb-2">PRICE</p>
         <select value={bandIdx} onChange={(e) => set('price', e.target.value)} className={selectCls}>
           {PRICE_BANDS.map((b, i) => (
             <option key={b.label} value={i}>{b.label}</option>
@@ -132,18 +132,18 @@ export default function Shop() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
-      <p className="text-[11px] tracking-[0.45em] text-smoke mb-2">TWELVE CLOTHING</p>
+      <p className="text-[11px] tracking-[0.45em] text-smoke dark:text-ivory/60 mb-2">TWELVE CLOTHING</p>
       <h1 className="font-serif text-4xl md:text-5xl mb-2">
         {cat !== 'All' ? cat : 'Shop All'}
       </h1>
-      <p className="text-sm text-smoke mb-8">{filtered.length} product{filtered.length === 1 ? '' : 's'}</p>
+      <p className="text-sm text-smoke dark:text-ivory/60 mb-8">{filtered.length} product{filtered.length === 1 ? '' : 's'}</p>
 
       {/* Search */}
       <input
         value={q}
         onChange={(e) => set('q', e.target.value)}
         placeholder="Search products…"
-        className="w-full border border-ink/20 bg-white/60 px-4 py-3 mb-6 text-sm outline-none focus:border-ink"
+        className="w-full border border-ink/20 dark:border-ivory/20 bg-white/60 dark:bg-white/5 px-4 py-3 mb-6 text-sm outline-none focus:border-ink dark:focus:border-ivory placeholder:text-smoke/70 dark:placeholder:text-ivory/40"
       />
 
       <div className="md:grid md:grid-cols-[240px_1fr] md:gap-10">
@@ -157,17 +157,17 @@ export default function Shop() {
           <div className="flex items-center justify-between mb-6 gap-3">
             <button
               onClick={() => setDrawerOpen(true)}
-              className="md:hidden border border-ink/25 px-4 py-2.5 text-sm tracking-[0.2em]"
+              className="md:hidden border border-ink/25 dark:border-ivory/25 px-4 py-2.5 text-sm tracking-[0.2em]"
             >
               FILTERS
             </button>
-            <p className="hidden md:block text-sm text-smoke">
+            <p className="hidden md:block text-sm text-smoke dark:text-ivory/60">
               Showing {filtered.length} of {products.length}
             </p>
             <select
               value={sort}
               onChange={(e) => set('sort', e.target.value)}
-              className="border border-ink/20 bg-white/60 px-3 py-2.5 text-sm outline-none focus:border-ink"
+              className="border border-ink/20 dark:border-ivory/20 bg-white/60 dark:bg-white/5 px-3 py-2.5 text-sm outline-none focus:border-ink dark:focus:border-ivory dark:[color-scheme:dark]"
               aria-label="Sort products"
             >
               {SORTS.map((s) => (
@@ -177,11 +177,11 @@ export default function Shop() {
           </div>
 
           {loading ? (
-            <p className="text-smoke text-center py-16">Loading products…</p>
+            <p className="text-smoke dark:text-ivory/60 text-center py-16">Loading products…</p>
           ) : filtered.length === 0 ? (
             <div className="text-center py-16">
               <p className="font-serif text-2xl mb-2">Nothing found</p>
-              <p className="text-smoke text-sm">Try clearing a filter or two.</p>
+              <p className="text-smoke dark:text-ivory/60 text-sm">Try clearing a filter or two.</p>
             </div>
           ) : (
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
@@ -197,7 +197,7 @@ export default function Shop() {
       {drawerOpen && (
         <div className="fixed inset-0 z-50 md:hidden">
           <div className="absolute inset-0 bg-ink/40" onClick={() => setDrawerOpen(false)} />
-          <div className="absolute left-0 top-0 bottom-0 w-80 max-w-[85vw] bg-ivory p-6 overflow-y-auto nice-scroll shadow-xl">
+          <div className="absolute left-0 top-0 bottom-0 w-80 max-w-[85vw] bg-ivory dark:bg-[#141414] p-6 overflow-y-auto nice-scroll shadow-xl">
             <div className="flex items-center justify-between mb-6">
               <p className="font-serif text-2xl">Filters</p>
               <button aria-label="Close filters" onClick={() => setDrawerOpen(false)} className="p-2">
@@ -209,7 +209,7 @@ export default function Shop() {
             {filters}
             <button
               onClick={() => setDrawerOpen(false)}
-              className="w-full mt-8 bg-ink text-ivory text-sm tracking-[0.25em] py-3.5"
+              className="w-full mt-8 bg-ink text-ivory dark:bg-ivory dark:text-ink text-sm tracking-[0.25em] py-3.5"
             >
               SHOW {filtered.length} PRODUCT{filtered.length === 1 ? '' : 'S'}
             </button>

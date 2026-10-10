@@ -8,7 +8,7 @@ import ProductCarousel from '../components/ProductCarousel.jsx';
 function Accordion({ title, children, defaultOpen = false }) {
   const [open, setOpen] = useState(defaultOpen);
   return (
-    <div className="border-b border-ink/10">
+    <div className="border-b border-ink/10 dark:border-ivory/10">
       <button
         onClick={() => setOpen((v) => !v)}
         className="w-full flex items-center justify-between py-4 text-left"
@@ -26,7 +26,7 @@ function Accordion({ title, children, defaultOpen = false }) {
           <path d="M12 5v14M5 12h14" strokeLinecap="round" />
         </svg>
       </button>
-      {open && <div className="pb-5 text-sm text-ink/75 leading-relaxed">{children}</div>}
+      {open && <div className="pb-5 text-sm text-ink/75 dark:text-ivory/75 leading-relaxed">{children}</div>}
     </div>
   );
 }
@@ -68,7 +68,7 @@ export default function Product() {
     window.scrollTo(0, 0);
   }, [id]);
 
-  if (!product) return <div className="p-10 text-center text-smoke">Loading…</div>;
+  if (!product) return <div className="p-10 text-center text-smoke dark:text-ivory/60">Loading…</div>;
 
   const images = product.images?.length ? product.images : [];
   const original = product.original_price || product.compare_at_price;
@@ -106,7 +106,7 @@ export default function Product() {
       <div className="max-w-7xl mx-auto px-4 py-8 md:py-12 grid gap-10 md:grid-cols-2">
         {/* Gallery */}
         <div>
-          <div className="relative aspect-[4/5] bg-cream overflow-hidden">
+          <div className="relative aspect-[4/5] bg-cream dark:bg-[#1a1a1a] overflow-hidden">
             {images[activeImg] ? (
               <img
                 src={images[activeImg]}
@@ -114,7 +114,7 @@ export default function Product() {
                 className="w-full h-full object-cover"
               />
             ) : (
-              <div className="w-full h-full flex items-center justify-center font-serif text-3xl text-smoke">
+              <div className="w-full h-full flex items-center justify-center font-serif text-3xl text-smoke dark:text-ivory/40">
                 TWELVE
               </div>
             )}
@@ -142,7 +142,7 @@ export default function Product() {
                   onClick={() => setActiveImg(i)}
                   aria-label={`View image ${i + 1}`}
                   className={`w-16 h-20 shrink-0 overflow-hidden border-2 transition ${
-                    i === activeImg ? 'border-ink' : 'border-transparent opacity-70 hover:opacity-100'
+                    i === activeImg ? 'border-ink dark:border-ivory' : 'border-transparent opacity-70 hover:opacity-100'
                   }`}
                 >
                   <img src={src} alt="" className="w-full h-full object-cover" />
@@ -154,29 +154,29 @@ export default function Product() {
 
         {/* Details */}
         <div>
-          <p className="text-[11px] tracking-[0.35em] text-smoke">{product.category?.toUpperCase()}</p>
+          <p className="text-[11px] tracking-[0.35em] text-smoke dark:text-ivory/60">{product.category?.toUpperCase()}</p>
           <h1 className="font-serif text-3xl md:text-5xl mt-2 leading-tight">{product.name}</h1>
 
           <div className="mt-4 flex items-baseline gap-3">
             <span className="text-2xl font-medium">{formatPKR(product.price)}</span>
             {hasDiscount && (
               <>
-                <span className="text-smoke line-through">{formatPKR(original)}</span>
-                <span className="text-red-700 text-sm font-medium">
+                <span className="text-smoke dark:text-ivory/50 line-through">{formatPKR(original)}</span>
+                <span className="text-red-700 dark:text-red-400 text-sm font-medium">
                   Save {formatPKR(saveAmt)}
                 </span>
               </>
             )}
           </div>
 
-          <p className={`text-sm mt-2 ${soldOut ? 'text-red-700' : 'text-green-800'}`}>
+          <p className={`text-sm mt-2 ${soldOut ? 'text-red-700 dark:text-red-400' : 'text-green-800 dark:text-green-400'}`}>
             {soldOut ? 'Currently sold out' : 'In stock — ships in 3–5 working days'}
           </p>
 
           {(product.sizes?.length || 0) > 0 && (
             <div className="mt-7">
               <div className="flex items-center justify-between mb-2">
-                <p className="text-xs tracking-[0.3em] text-smoke">SELECT SIZE</p>
+                <p className="text-xs tracking-[0.3em] text-smoke dark:text-ivory/60">SELECT SIZE</p>
               </div>
               <div className="flex flex-wrap gap-2">
                 {product.sizes.map((s) => (
@@ -185,8 +185,8 @@ export default function Product() {
                     onClick={() => setSize(s)}
                     className={`min-w-12 px-4 py-2.5 border text-sm transition ${
                       size === s
-                        ? 'bg-ink text-ivory border-ink'
-                        : 'border-ink/25 hover:border-ink'
+                        ? 'bg-ink text-ivory border-ink dark:bg-ivory dark:text-ink dark:border-ivory'
+                        : 'border-ink/25 hover:border-ink dark:border-ivory/25 dark:hover:border-ivory'
                     }`}
                   >
                     {s}
@@ -198,7 +198,7 @@ export default function Product() {
 
           {(product.colors?.length || 0) > 0 && (
             <div className="mt-6">
-              <p className="text-xs tracking-[0.3em] text-smoke mb-2">SELECT COLOR</p>
+              <p className="text-xs tracking-[0.3em] text-smoke dark:text-ivory/60 mb-2">SELECT COLOR</p>
               <div className="flex flex-wrap gap-2">
                 {product.colors.map((c) => (
                   <button
@@ -206,8 +206,8 @@ export default function Product() {
                     onClick={() => setColor(c)}
                     className={`px-4 py-2.5 border text-sm transition ${
                       color === c
-                        ? 'bg-ink text-ivory border-ink'
-                        : 'border-ink/25 hover:border-ink'
+                        ? 'bg-ink text-ivory border-ink dark:bg-ivory dark:text-ink dark:border-ivory'
+                        : 'border-ink/25 hover:border-ink dark:border-ivory/25 dark:hover:border-ivory'
                     }`}
                   >
                     {c}
@@ -218,7 +218,7 @@ export default function Product() {
           )}
 
           <div className="mt-7 flex items-center gap-3">
-            <div className="flex items-center border border-ink/25">
+            <div className="flex items-center border border-ink/25 dark:border-ivory/25">
               <button className="px-4 py-3.5" onClick={() => setQty(Math.max(1, qty - 1))} aria-label="Decrease quantity">
                 −
               </button>
@@ -230,7 +230,7 @@ export default function Product() {
             <button
               onClick={handleAdd}
               disabled={soldOut}
-              className="flex-1 bg-ink text-ivory text-sm tracking-[0.25em] py-4 hover:opacity-90 transition disabled:opacity-40"
+              className="flex-1 bg-ink text-ivory dark:bg-ivory dark:text-ink text-sm tracking-[0.25em] py-4 hover:opacity-90 transition disabled:opacity-40"
             >
               ADD TO CART
             </button>
@@ -238,13 +238,13 @@ export default function Product() {
           <button
             onClick={handleBuyNow}
             disabled={soldOut}
-            className="w-full mt-3 border border-ink text-sm tracking-[0.25em] py-4 hover:bg-ink hover:text-ivory transition disabled:opacity-40"
+            className="w-full mt-3 border border-ink dark:border-ivory text-sm tracking-[0.25em] py-4 hover:bg-ink hover:text-ivory dark:hover:bg-ivory dark:hover:text-ink transition disabled:opacity-40"
           >
             BUY NOW
           </button>
-          {error && <p className="text-red-700 text-sm mt-3">{error}</p>}
+          {error && <p className="text-red-700 dark:text-red-400 text-sm mt-3">{error}</p>}
 
-          <div className="mt-8 border-t border-ink/10">
+          <div className="mt-8 border-t border-ink/10 dark:border-ivory/10">
             <Accordion title="DESCRIPTION" defaultOpen>
               {product.description || 'A Twelve Clothing essential — minimal, timeless, made to last.'}
             </Accordion>
